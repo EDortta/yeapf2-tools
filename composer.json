@@ -1,0 +1,15 @@
+{
+    "name": "esteban/yeapf2-tools",
+    "description": "YeAPF2 command line tools",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Esteban D.Dortta",
+            "email": "dortta@yahoo.com"
+        }
+    ],
+    "require": {
+        "edortta/yeapf2": "^2.0"
+    }
+}
