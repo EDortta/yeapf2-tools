@@ -1,7 +1,8 @@
 {
     "name": "esteban/yeapf2-tools",
     "description": "YeAPF2 command line tools",
-    "type": "project",
+    "type": "library",
+    "homepage": "https://www.yeapf.com/v2/tools",
     "license": "MIT",
     "authors": [
         {
@@ -10,6 +11,7 @@
         }
     ],
     "require": {
+        "php": ">=8.2",
         "edortta/yeapf2": "^2.0"
     }
 }
