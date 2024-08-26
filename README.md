@@ -1,8 +1,9 @@
 # Explanation
 
 This project is intended to be used at command line to create and manipulate a YeAPF2 project.
+Whe present here two opctions: Install of this package or install an specific project.
 
-## Installation this package
+## A. Installation this package
 
 1. Install this package globally
     ```bash
@@ -29,7 +30,7 @@ This project is intended to be used at command line to create and manipulate a Y
    export PATH="$PATH:$HOME/.composer/vendor/bin"
    ```
 
-### Installing a project alone
+### B. Installing a project alone
   Go to the folder of your project and run this command:
   This will install `y2-classic-example` project in `www` folder of your project.
 
