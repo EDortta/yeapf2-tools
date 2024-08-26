@@ -2,7 +2,7 @@
 
 This project is intended to be used at command line to create and manipulate a YeAPF2 project.
 
-## Installation
+## Installation this package
 
 1. Install this package globally
     ```bash
@@ -28,3 +28,16 @@ This project is intended to be used at command line to create and manipulate a Y
    ```bash
    export PATH="$PATH:$HOME/.composer/vendor/bin"
    ```
+
+### Installing a project alone
+  Go to the folder of your project and run this command:
+  This will install `y2-classic-example` project in `www` folder of your project.
+
+  ```bash
+   bash <(curl -Ls https://raw.githubusercontent.com/EDortta/yeapf2-tools/main/install-project.sh ) y2-classic-example
+   ```  
+
+   You can just ompit the project name and it will list the projects available.
+  ```bash
+   bash <(curl -Ls https://raw.githubusercontent.com/EDortta/yeapf2-tools/main/install-project.sh ) 
+   ```   
