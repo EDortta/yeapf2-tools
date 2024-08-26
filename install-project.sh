@@ -42,8 +42,7 @@ if [ ! -d "www" ]; then
 
     pushd www && (
         pushd web && (
-            composer install
-            popd
+            composer install            
         )
         ./build.sh
     )
