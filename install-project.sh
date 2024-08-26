@@ -40,7 +40,11 @@ if [ ! -d "www" ]; then
 
     echo "Project created"
         
-    pushd www/web && composer  install && popd && ./build.sh && popd
+    cd www/web
+    composer  install
+    cd .. 
+    ./build.sh
+    cd ..
 
     rm -f $1.zip
 fi
