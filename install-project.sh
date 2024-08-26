@@ -11,6 +11,12 @@ if [ -z "$jq" ]; then
     exit 1
 fi
 
+c=`which composer`
+if [ -z "$c" ]; then
+    echo "composer not installed"
+    exit 1
+fi
+
 if [ ! -d "www" ]; then
     curl -s -L https://github.com/EDortta/yeapf2-tools/raw/main/distros/$1.zip -o $1.zip
     mkdir -p www
@@ -18,20 +24,29 @@ if [ ! -d "www" ]; then
     mkdir -p www/web/.config -p
     namespace=$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c8; echo -n '-'; cat /dev/urandom | tr -dc 'a-f0-9' | head -c4; echo -n '-'; cat /dev/urandom | tr -dc 'a-f0-9' | head -c4; echo -n '-'; cat /dev/urandom | tr -dc 'a-f0-9' | head -c4; echo -n '-'; cat /dev/urandom | tr -dc 'a-f0-9' | head -c12)
     jwtKey=$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c32)
-    config=$(jq '.namespace = "'"$namespace"'" | .jwtKey = "'"$jwtKey"'"' www/web/config/randomness.json)
+    config=$(jq '.namespace = "'"$namespace"'" | .jwtKey = "'"$jwtKey"'"' www/web/.config-sample/randomness.json)
     echo "$config" > www/web/.config/randomness.json
+    echo ""
     echo "randomness.json created"
 
-    cp www/web/config/connection.json www/web/.config/connection.json
+    cp www/web/.config-sample/connection.json www/web/.config/connection.json
     echo "connection.json copied"
 
-    cp www/web/config/mode.json www/web/.config/mode.json
+    cp www/web/.config-sample/mode.json www/web/.config/mode.json
     echo "mode.json copied"
 
-    echo "You need to copy i18n from web/config/i18n to web/.config/i18n"
+    echo "You need to copy i18n from web/.config-sample/i18n to web/.config/i18n"
     echo "with your own values."
 
     echo "Project created"
-    
+
+    pushd www && (
+        pushd web && (
+            composer install
+            popd
+        )
+        ./build.sh
+    )
+
     rm -f $1.zip
 fi
