@@ -41,8 +41,10 @@ if [ ! -d "www" ]; then
     echo "Project created"
         
     cd www/web
+    echo "...installing dependencies"
     composer  install
     cd .. 
+    echo "...creating containers"
     ./build.sh
     cd ..
 
