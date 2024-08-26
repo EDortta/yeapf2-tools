@@ -39,9 +39,8 @@ if [ ! -d "www" ]; then
     echo "with your own values."
 
     echo "Project created"
-
-    pushd www && composer  install && popd
-    pushd www/web && ./build.sh && popd
+        
+    pushd www/web && composer  install && popd && ./build.sh && popd
 
     rm -f $1.zip
 fi
